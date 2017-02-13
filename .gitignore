@@ -22,3 +22,6 @@ netcode.io/netcodeNATIVE.i*.TMP
 netcode.io/netcodeNATIVE.cs
 *.nupkg
 native-dist/*
+*.userprefs
+*.mdproj
+*.cproj

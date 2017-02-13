@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Name="netcode.io-csharp" Path="netcode.io-csharp" Type="Library">
   <PostProject>
     <Project Guid="6374656E-646F-2E65-5769-6E646F77736E" />
