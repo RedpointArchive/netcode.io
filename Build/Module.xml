@@ -2,7 +2,7 @@
 <Module>
   <Name>netcode.io</Name>
   <Authors>Redpoint Games + netcode.io Authors</Authors>
-  <SemanticVersion>0.1.1</SemanticVersion>
+  <SemanticVersion>0.1.2</SemanticVersion>
   <Description>netcode.io is a cross-platform network protocol for games.  These are the C# bindings.</Description>
   <LicenseUrl>https://opensource.org/licenses/MIT</LicenseUrl>
   <ProjectUrl>https://netcode.io/</ProjectUrl>
