@@ -11,4 +11,10 @@
     <NativeInclude Path="/usr/local/include" />
     <NativeInclude Path="..\netcode.io-import" />
   </Platform>
+  <Platform Type="Linux">
+    <NativeLibraryLink Name="sodium" />
+    <NativeLibraryPath Path="/usr/lib" />
+    <NativeLibraryPath Path="/usr/lib64" />
+    <NativeInclude Path="..\netcode.io-import" />
+  </Platform>
 </ExternalProject>
