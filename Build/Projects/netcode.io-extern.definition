@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalProject Name="netcode.io-extern">
   <Platform Type="Windows">
-    <NativeLibraryLink Name="..\netcode.io-import\windows\sodium-release" />
+    <NativeLibraryLink Name="..\sodium\windows\$(Platform)\libsodium" />
     <NativeInclude Path="..\netcode.io-import\windows" />
     <NativeInclude Path="..\netcode.io-import" />
   </Platform>

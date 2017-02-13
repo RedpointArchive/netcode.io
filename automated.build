@@ -10,8 +10,17 @@ if host Linux
   set target-platforms Linux
 endif
 
+set build-property Configuration Release
+
 generate
 build
+
+if host Windows
+  native-execute powershell.exe -ExecutionPolicy Bypass .\Build\ExtraBuildOnWindows.ps1
+endif
+
+set execute-configuration Release
+
 execute netcode.io.test
 
 set package-format nuget/zip
