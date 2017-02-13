@@ -8,19 +8,20 @@ stage("Windows") {
   }
 }
 
-// We do not build for Mac or Linux yet.
-/*
 stage("Mac") {
   node('mac') {
     checkout poll: false, changelog: false, scm: scm
     sh ("mono Protobuild.exe --upgrade-all MacOS")
-    sh ("mono Protobuild.exe --upgrade-all Android")
-    sh ("mono Protobuild.exe --upgrade-all iOS")
+    // We don't build for mobile yet.
+    //sh ("mono Protobuild.exe --upgrade-all Android")
+    //sh ("mono Protobuild.exe --upgrade-all iOS")
     sh ("mono Protobuild.exe --automated-build")
     stash includes: '*.nupkg', name: 'mac-packages'
   }
 }
 
+// We do not build for Linux yet.
+/*
 stage("Linux") {
   node('linux') {
     checkout poll: true, changelog: true, scm: scm

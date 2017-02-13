@@ -13,10 +13,15 @@ endif
 set build-property Configuration Release
 
 generate
+
+if host MacOS
+  native-execute Build/PreBuildMacOS.sh
+endif
+
 build
 
 if host Windows
-  native-execute powershell.exe -ExecutionPolicy Bypass .\Build\ExtraBuildOnWindows.ps1
+  native-execute powershell.exe -ExecutionPolicy Bypass .\Build\PostBuildWindows.ps1
 endif
 
 set execute-configuration Release
