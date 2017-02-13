@@ -5,4 +5,10 @@
     <NativeInclude Path="..\netcode.io-import\windows" />
     <NativeInclude Path="..\netcode.io-import" />
   </Platform>
+  <Platform Type="MacOS">
+    <NativeLibraryLink Name="sodium" />
+    <NativeLibraryPath Path="/usr/local/lib" />
+    <NativeInclude Path="/usr/local/include" />
+    <NativeInclude Path="..\netcode.io-import" />
+  </Platform>
 </ExternalProject>
