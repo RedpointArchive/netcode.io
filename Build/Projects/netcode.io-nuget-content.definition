@@ -4,7 +4,8 @@
   <Files>
     <None Include="netcode32.dll" />
     <None Include="netcode64.dll" />
-    <None Include="netcodeBinding.dll" />
     <None Include="netcode.dylib" />
+    <None Include="libnetcode32.so" />
+    <None Include="libnetcode64.so" />
   </Files>
 </IncludeProject>
