@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="netcode.io-csharp" Path="netcode.io-csharp" Type="Library">
+  <References>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="netcode" />
+  </References>
+  <Files>
+    <Compile Include="NetcodeLibrary.cs" />
+    <Compile Include="NetcodeLogLevel.cs" />
+    <Compile Include="Server.cs" />
+  </Files>
+</Project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomProject Name="netcode.io-import" Path="netcode.io-import">
+  <OnGenerate HostName="Windows" TargetName="Windows">
+    <Command>../premake5/Windows/premake5.exe</Command>
+    <Arguments>vs2015</Arguments>
+  </OnGenerate>
+  <OnGenerate HostName="MacOS" TargetName="MacOS">
+    <Command>../premake5/MacOS/premake5</Command>
+    <Arguments>gmake</Arguments>
+  </OnGenerate>
+  <OnGenerate HostName="Linux" TargetName="Linux">
+    <Command>../premake5/Linux/premake5</Command>
+    <Arguments>gmake</Arguments>
+  </OnGenerate>
+  <OnBuild HostName="MacOS" TargetName="MacOS">
+    <Command>make</Command>
+  </OnBuild>
+  <OnBuild HostName="Linux" TargetName="Linux">
+    <Command>make</Command>
+  </OnBuild>
+  <SolutionProject HostName="Windows" TargetName="Windows">
+    <ProjectName>test</ProjectName>
+    <ProjectPath>test.vcxproj</ProjectPath>
+    <ProjectGuid>65689E7C-519F-9F0D-FA8B-8510E6A11B0F</ProjectGuid>
+    <TypeGuid>8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942</TypeGuid>
+    <ConfigurationMapping Old="Debug" New="Debug|x64" />
+    <ConfigurationMapping Old="Release" New="Release|x64" />
+  </SolutionProject>
+  <SolutionProject HostName="Windows" TargetName="Windows">
+    <ProjectName>client</ProjectName>
+    <ProjectPath>client.vcxproj</ProjectPath>
+    <ProjectGuid>8461ABF6-7003-D6CC-59BE-E92045FF5C1D</ProjectGuid>
+    <TypeGuid>8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942</TypeGuid>
+    <ConfigurationMapping Old="Debug" New="Debug|x64" />
+    <ConfigurationMapping Old="Release" New="Release|x64" />
+  </SolutionProject>
+  <SolutionProject HostName="Windows" TargetName="Windows">
+    <ProjectName>server</ProjectName>
+    <ProjectPath>server.vcxproj</ProjectPath>
+    <ProjectGuid>9C76841B-8818-AFF1-71D3-C2455D143642</ProjectGuid>
+    <TypeGuid>8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942</TypeGuid>
+    <ConfigurationMapping Old="Debug" New="Debug|x64" />
+    <ConfigurationMapping Old="Release" New="Release|x64" />
+  </SolutionProject>
+  <SolutionProject HostName="Windows" TargetName="Windows">
+    <ProjectName>client_server</ProjectName>
+    <ProjectPath>client_server.vcxproj</ProjectPath>
+    <ProjectGuid>7A0268D0-E6C2-E306-AFFD-2C841B7D28E3</ProjectGuid>
+    <TypeGuid>8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942</TypeGuid>
+    <ConfigurationMapping Old="Debug" New="Debug|x64" />
+    <ConfigurationMapping Old="Release" New="Release|x64" />
+  </SolutionProject>
+  <!--<OutputFile HostName="Windows" TargetName="Windows">
+
+  </OutputFile>-->
+</CustomProject>

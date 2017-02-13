@@ -1,0 +1,20 @@
+# Ignore these files.
+bin
+obj
+.source
+*.speccache
+*.sln
+packages/**
+*.csproj
+
+.vs/
+netcode.io-import/
+*.input
+*.db
+*.opendb
+*.output
+netcode.io/SWIGTYPE_*
+netcode.io/*PINVOKE.cs
+netcode.io/*_wrap.c
+*.vcxproj
+*.user

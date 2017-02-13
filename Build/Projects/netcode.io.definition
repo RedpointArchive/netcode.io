@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="netcode" Path="netcode.io" Type="Library" Language="C++">
+  <References>
+    <Reference Include="netcode.io-extern" />
+  </References>
+  <Properties>
+    <Property Name="BindingGenerator" Value="SWIG" />
+  </Properties>
+  <Files>
+    <Compile Include="../netcode.io-import/netcode.c">
+      <Link>netcode.c</Link>
+    </Compile>
+    <None Include="../netcode.io-import/netcode.h">
+      <Link>netcode.h</Link>
+    </None>
+    <None Include="netcodeNATIVE.i" />
+  </Files>
+</Project>
