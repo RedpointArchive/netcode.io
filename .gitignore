@@ -18,3 +18,5 @@ netcode.io/*PINVOKE.cs
 netcode.io/*_wrap.c
 *.vcxproj
 *.user
+netcode.io/netcodeNATIVE.i*.TMP
+netcode.io/netcodeNATIVE.cs

@@ -6,6 +6,7 @@
     <Reference Include="netcode" />
   </References>
   <Files>
+    <Compile Include="Client.cs" />
     <Compile Include="NetcodeLibrary.cs" />
     <Compile Include="NetcodeLogLevel.cs" />
     <Compile Include="Server.cs" />

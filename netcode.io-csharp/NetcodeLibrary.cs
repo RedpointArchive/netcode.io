@@ -1,4 +1,6 @@
-﻿namespace netcode.io
+﻿using System;
+
+namespace netcode.io
 {
     public static class NetcodeLibrary
     {
@@ -37,6 +39,48 @@
         public static void Sleep(double seconds)
         {
             netcodeNATIVE.netcode_sleep(seconds);
+        }
+
+        public static UInt64 GetRandomUInt64()
+        {
+            var bytes = new byte[sizeof(UInt64)];
+            netcodeNATIVE.netcode_random_bytes(bytes, bytes.Length);
+            return BitConverter.ToUInt64(bytes, 0);
+        }
+
+        public static byte[] GenerateConnectTokenFromPrivateKey(
+            string[] serverAddresses,
+            int expirySeconds,
+            UInt64 clientId,
+            UInt64 protocolId,
+            UInt64 sequence,
+            byte[] privateKey)
+        {
+            if (privateKey == null)
+            {
+                throw new ArgumentNullException(nameof(privateKey));
+            }
+
+            if (privateKey.Length != netcodeNATIVE.NETCODE_KEY_BYTES)
+            {
+                throw new ArgumentException(
+                    $"The private symmetric key must be {netcodeNATIVE.NETCODE_KEY_BYTES} bytes long.",
+                    nameof(privateKey));
+            }
+            
+            var connectToken = new byte[netcodeNATIVE.NETCODE_CONNECT_TOKEN_BYTES];
+
+            netcodeNATIVE.netcode_generate_connect_token(
+                serverAddresses.Length,
+                serverAddresses,
+                expirySeconds,
+                clientId,
+                protocolId,
+                sequence,
+                privateKey,
+                connectToken);
+
+            return connectToken;
         }
     }
 }

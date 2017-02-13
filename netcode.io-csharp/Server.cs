@@ -23,6 +23,11 @@ namespace netcode.io
         {
             NetcodeLibrary.Init();
 
+            if (privateKey == null)
+            {
+                throw new ArgumentNullException(nameof(privateKey));
+            }
+
             if (privateKey.Length != netcodeNATIVE.NETCODE_KEY_BYTES)
             {
                 throw new ArgumentException(
@@ -31,6 +36,11 @@ namespace netcode.io
             }
 
             _server = netcodeNATIVE.netcode_server_create(bindAddress, publicAddress, protocolId, privateKey, time);
+
+            if (_server == null)
+            {
+                throw new InvalidOperationException("Unable to create native netcode.io server");
+            }
         }
 
         private void AssertNotDisposed()
@@ -90,6 +100,8 @@ namespace netcode.io
         /// <param name="packetData">The packet data.  Must be no larger than <see cref="NetcodeLibrary.GetMaxPacketSize()"/></param>
         public void SendPacket(int clientIndex, byte[] packetData)
         {
+            AssertNotDisposed();
+
             if (packetData == null)
             {
                 throw new ArgumentNullException(nameof(packetData));
@@ -111,6 +123,8 @@ namespace netcode.io
         /// <returns>The byte array of the packet data, or <c>null</c> if no packet is available.</returns>
         public byte[] ReceivePacket(int clientIndex)
         {
+            AssertNotDisposed();
+
             int packetBytes;
             IntPtr packetRaw;
             byte[] packet;
