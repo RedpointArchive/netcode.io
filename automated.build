@@ -17,6 +17,9 @@ generate
 if host MacOS
   native-execute Build/PreBuildMacOS.sh
 endif
+if host Linux
+  native-execute Build/PreBuildLinux.sh
+endif
 
 build
 

@@ -20,8 +20,6 @@ stage("Mac") {
   }
 }
 
-// We do not build for Linux yet.
-/*
 stage("Linux") {
   node('linux') {
     checkout poll: true, changelog: true, scm: scm
@@ -30,7 +28,6 @@ stage("Linux") {
     stash includes: '*.nupkg', name: 'linux-packages'
   }
 }
-*/
 
 stage("Unified") {
   node('windows') {
