@@ -36,8 +36,8 @@ stage("Unified") {
       checkout poll: true, changelog: true, scm: scm
       if (fileExists('unified.build')) {
         unstash 'windows-packages'
-        //unstash 'mac-packages'
-        //unstash 'linux-packages'
+        unstash 'mac-packages'
+        unstash 'linux-packages'
         bat ("Protobuild.exe --automated-build unified.build")
       }
     }
