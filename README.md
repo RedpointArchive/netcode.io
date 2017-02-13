@@ -4,7 +4,19 @@ This repository contains C# bindings for netcode.io.
 
 ## Install from NuGet
 
-This library will be in NuGet in the near future.
+This library is available on NuGet, with support for Windows, macOS and Linux: [netcode.io](https://www.nuget.org/packages/netcode.io)
+
+You can install it with the package manager command line:
+
+```
+Install-Package netcode.io
+```
+
+Or install it with Protobuild if you're using Protobuild to manage projects:
+
+```
+Protobuild.exe --install netcode.io
+```
 
 ## Compiling from source
 
