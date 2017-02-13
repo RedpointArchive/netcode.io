@@ -29,6 +29,10 @@ endif
 if host MacOS
   native-execute Build/PostBuildMacOS.sh
 endif
+if host Linux
+  native-execute Build/PostBuildLinux.sh
+endif
+
 
 set execute-configuration Release
 

@@ -613,6 +613,21 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="$root/Input/Properties/BindingGenerator = 'SWIG'">
+          <xsl:if test="$root/Input/Generation/Platform != 'MacOS'">
+            <Exec>
+              <xsl:attribute name="Command">
+                <xsl:text>cat &gt;bin/$(ProjectName)Binding.dll.config </xsl:text>
+                <xsl:text><![CDATA[<<EOF
+<?xml version="1.0" encoding="utf-8"> 
+<configuration> 
+  <dllmap dll="lib$(ProjectName)" os="linux" cpu="x86-64" target="lib$(ProjectName)64.so" /> 
+  <dllmap dll="lib$(ProjectName)" os="linux" cpu="x86" target="lib$(ProjectName)32.so" /> 
+</configuration> 
+EOF
+]]></xsl:text>
+              </xsl:attribute>
+            </Exec>
+          </xsl:if>
           <Exec>
             <xsl:attribute name="Command">
               <xsl:text>mcs -target:library -out:bin/$(ProjectName)Binding.dll </xsl:text>
