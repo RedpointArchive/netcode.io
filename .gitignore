@@ -25,3 +25,6 @@ native-dist/*
 *.userprefs
 *.mdproj
 *.cproj
+
+Resources/
+Properties/

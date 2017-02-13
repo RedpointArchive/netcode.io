@@ -26,6 +26,9 @@ build
 if host Windows
   native-execute powershell.exe -ExecutionPolicy Bypass .\Build\PostBuildWindows.ps1
 endif
+if host MacOS
+  native-execute Build/PostBuildMacOS.sh
+endif
 
 set execute-configuration Release
 
