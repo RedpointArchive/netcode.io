@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Module>
-  <Name>netcode.io-csharp</Name>
+  <Name>netcode.io</Name>
+  <Authors>Redpoint Games + netcode.io Authors</Authors>
+  <SemanticVersion>0.1.0</SemanticVersion>
+  <Description>netcode.io is a cross-platform network protocol for games.  These are the C# bindings.</Description>
+  <LicenseUrl>https://opensource.org/licenses/MIT</LicenseUrl>
+  <ProjectUrl>https://netcode.io/</ProjectUrl>
+  <GitRepositoryUrl>https://github.com/RedpointGames/netcode.io</GitRepositoryUrl>
   <DefaultAction>resync</DefaultAction>
   <DisableSynchronisation>false</DisableSynchronisation>
   <GenerateNuGetRepositories>true</GenerateNuGetRepositories>

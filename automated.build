@@ -1,0 +1,35 @@
+#version 1
+
+if host Windows
+  set target-platforms Windows
+endif
+if host MacOS
+  set target-platforms MacOS,Android,iOS
+endif
+if host Linux
+  set target-platforms Linux
+endif
+
+generate
+build
+execute netcode.io.test
+
+set package-format nuget/zip
+
+pack . netcode.io.$TARGET_PLATFORM.nupkg $TARGET_PLATFORM
+
+if host Windows
+  if file-exists C:\Users\build\Documents\nuget_api_key.txt
+    push C:\Users\build\Documents\nuget_api_key.txt netcode.io.$TARGET_PLATFORM.nupkg https://www.nuget.org/api/v2/package --ignore-on-existing
+  endif
+endif
+if host MacOS
+  if file-exists /Users/june/nuget_api_key.txt
+    push /Users/june/nuget_api_key.txt netcode.io.$TARGET_PLATFORM.nupkg https://www.nuget.org/api/v2/package --ignore-on-existing
+  endif
+endif
+if host Linux
+  if file-exists /srv/nuget_api_key.txt
+    push /srv/nuget_api_key.txt netcode.io.$TARGET_PLATFORM.nupkg https://www.nuget.org/api/v2/package --ignore-on-existing
+  endif
+endif
