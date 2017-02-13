@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Name="netcode.io-csharp" Path="netcode.io-csharp" Type="Library">
+  <PostProject>
+    <Project Guid="6374656E-646F-2E65-5769-6E646F77736E" />
+  </PostProject>
   <References>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -7,6 +10,7 @@
   </References>
   <Files>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientState.cs" />
     <Compile Include="NetcodeLibrary.cs" />
     <Compile Include="NetcodeLogLevel.cs" />
     <Compile Include="Server.cs" />

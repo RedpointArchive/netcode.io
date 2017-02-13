@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project Name="netcode" Path="netcode.io" Type="Library" Language="C++">
+<Project Name="netcode" Path="netcode.io" Type="Library" Language="C++" Guid="6374656E-646F-2E65-5769-6E646F77736E">
   <References>
     <Reference Include="netcode.io-extern" />
   </References>
