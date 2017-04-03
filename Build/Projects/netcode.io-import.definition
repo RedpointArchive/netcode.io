@@ -13,10 +13,12 @@
     <Arguments>gmake</Arguments>
   </OnGenerate>
   <OnBuild HostName="MacOS" TargetName="MacOS">
-    <Command>make</Command>
+    <Command>bash</Command>
+    <Arguments>-c 'cd c &amp;&amp; make'</Arguments>
   </OnBuild>
   <OnBuild HostName="Linux" TargetName="Linux">
-    <Command>make</Command>
+    <Command>bash</Command>
+    <Arguments>-c 'cd c &amp;&amp; make'</Arguments>
   </OnBuild>
   <SolutionProject HostName="Windows" TargetName="Windows">
     <ProjectName>test</ProjectName>
