@@ -2,19 +2,19 @@
 <ExternalProject Name="netcode.io-extern">
   <Platform Type="Windows">
     <NativeLibraryLink Name="..\sodium\windows\$(Platform)\libsodium" />
-    <NativeInclude Path="..\netcode.io-import\windows" />
-    <NativeInclude Path="..\netcode.io-import" />
+    <NativeInclude Path="..\netcode.io-import\c\windows" />
+    <NativeInclude Path="..\netcode.io-import\c" />
   </Platform>
   <Platform Type="MacOS">
     <NativeLibraryLink Name="sodium" />
     <NativeLibraryPath Path="/usr/local/lib" />
     <NativeInclude Path="/usr/local/include" />
-    <NativeInclude Path="..\netcode.io-import" />
+    <NativeInclude Path="..\netcode.io-import\c" />
   </Platform>
   <Platform Type="Linux">
     <NativeLibraryLink Name="sodium" />
     <NativeLibraryPath Path="/usr/lib" />
     <NativeLibraryPath Path="/usr/lib64" />
-    <NativeInclude Path="..\netcode.io-import" />
+    <NativeInclude Path="..\netcode.io-import\c" />
   </Platform>
 </ExternalProject>

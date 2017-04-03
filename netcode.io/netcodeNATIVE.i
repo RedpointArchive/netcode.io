@@ -1,6 +1,6 @@
 %module netcodeNATIVE
 %{
-#include "../netcode.io-import/netcode.h"
+#include "../netcode.io-import/c/netcode.h"
 %}
 
 %include <typemaps.i>
@@ -49,4 +49,4 @@
 
 %apply int *OUTPUT { int * packet_bytes };
 
-%include "../netcode.io-import/netcode.h"
+%include "../netcode.io-import/c/netcode.h"
