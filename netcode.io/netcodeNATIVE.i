@@ -24,6 +24,10 @@
 %typemap(cstype) uint64_t "System.UInt64" 
 %typemap(in) uint64_t %{ $1 = ($1_ltype)$input; %} 
 %typemap(csin) uint64_t "$csinput" 
+%typemap(csout, excode=SWIGEXCODE) uint64_t {
+    System.UInt64 ret = $imcall;$excode
+    return ret;
+  }
 
 %typemap(ctype) char** "char**"
 %typemap(imtype) char** "string[]"
