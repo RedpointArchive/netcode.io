@@ -49,6 +49,6 @@
 
 %apply int *OUTPUT { int * packet_bytes };
 
-%ignore netcode_server_client_user_data
+%ignore netcode_server_client_user_data;
 
 %include "../netcode.io-import/c/netcode.h"
