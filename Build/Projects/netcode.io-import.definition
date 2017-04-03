@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomProject Name="netcode.io-import" Path="netcode.io-import">
+<CustomProject Name="netcode.io-import" Path="netcode.io-import/c">
   <OnGenerate HostName="Windows" TargetName="Windows">
-    <Command>../premake5/Windows/premake5.exe</Command>
+    <Command>../../premake5/Windows/premake5.exe</Command>
     <Arguments>vs2015</Arguments>
   </OnGenerate>
   <OnGenerate HostName="MacOS" TargetName="MacOS">
-    <Command>../premake5/MacOS/premake5</Command>
+    <Command>../../premake5/MacOS/premake5</Command>
     <Arguments>gmake</Arguments>
   </OnGenerate>
   <OnGenerate HostName="Linux" TargetName="Linux">
-    <Command>../premake5/Linux/premake5</Command>
+    <Command>../../premake5/Linux/premake5</Command>
     <Arguments>gmake</Arguments>
   </OnGenerate>
   <OnBuild HostName="MacOS" TargetName="MacOS">
-    <Command>make</Command>
+    <Command>bash</Command>
+    <Arguments>-c 'cd c &amp;&amp; make'</Arguments>
   </OnBuild>
   <OnBuild HostName="Linux" TargetName="Linux">
-    <Command>make</Command>
+    <Command>bash</Command>
+    <Arguments>-c 'cd c &amp;&amp; make'</Arguments>
   </OnBuild>
   <SolutionProject HostName="Windows" TargetName="Windows">
     <ProjectName>test</ProjectName>

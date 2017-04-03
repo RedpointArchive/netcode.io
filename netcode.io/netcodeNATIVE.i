@@ -1,6 +1,6 @@
 %module netcodeNATIVE
 %{
-#include "../netcode.io-import/netcode.h"
+#include "../netcode.io-import/c/netcode.h"
 %}
 
 %include <typemaps.i>
@@ -24,6 +24,10 @@
 %typemap(cstype) uint64_t "System.UInt64" 
 %typemap(in) uint64_t %{ $1 = ($1_ltype)$input; %} 
 %typemap(csin) uint64_t "$csinput" 
+%typemap(csout, excode=SWIGEXCODE) uint64_t {
+    System.UInt64 ret = $imcall;$excode
+    return ret;
+  }
 
 %typemap(ctype) char** "char**"
 %typemap(imtype) char** "string[]"
@@ -49,4 +53,6 @@
 
 %apply int *OUTPUT { int * packet_bytes };
 
-%include "../netcode.io-import/netcode.h"
+%ignore netcode_server_client_user_data;
+
+%include "../netcode.io-import/c/netcode.h"

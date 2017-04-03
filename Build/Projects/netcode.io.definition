@@ -7,10 +7,10 @@
     <Property Name="BindingGenerator" Value="SWIG" />
   </Properties>
   <Files>
-    <Compile Include="../netcode.io-import/netcode.c">
+    <Compile Include="../netcode.io-import/c/netcode.c">
       <Link>netcode.c</Link>
     </Compile>
-    <None Include="../netcode.io-import/netcode.h">
+    <None Include="../netcode.io-import/c/netcode.h">
       <Link>netcode.h</Link>
     </None>
     <None Include="netcodeNATIVE.i" />
