@@ -2,5 +2,5 @@
 
 pushd netcode.io-import
 cd c
-../../premake5/MacOS/premake5 gmake
+../../premake5/Linux/premake5 gmake
 make
