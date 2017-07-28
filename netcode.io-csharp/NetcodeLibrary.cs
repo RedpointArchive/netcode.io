@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace netcode.io
 {
@@ -20,10 +21,14 @@ namespace netcode.io
             netcodeNATIVE.netcode_log_level((int)logLevel);
         }
 
-        public static void GetRandomBytes(int length)
+        public static byte[] GetRandomBytes(int length)
         {
+            var unmanagedPointer = Marshal.AllocHGlobal(length);
+            netcodeNATIVE.netcode_random_bytes(unmanagedPointer, length);
             var bytes = new byte[length];
-            netcodeNATIVE.netcode_random_bytes(bytes, length);
+            Marshal.Copy(unmanagedPointer, bytes, 0, length);
+            Marshal.FreeHGlobal(unmanagedPointer);
+            return bytes;
         }
 
         public static int GetMaxPacketSize()
@@ -43,8 +48,12 @@ namespace netcode.io
 
         public static UInt64 GetRandomUInt64()
         {
-            var bytes = new byte[sizeof(UInt64)];
-            netcodeNATIVE.netcode_random_bytes(bytes, bytes.Length);
+            var length = sizeof(UInt64);
+            var unmanagedPointer = Marshal.AllocHGlobal(length);
+            netcodeNATIVE.netcode_random_bytes(unmanagedPointer, length);
+            var bytes = new byte[length];
+            Marshal.Copy(unmanagedPointer, bytes, 0, length);
+            Marshal.FreeHGlobal(unmanagedPointer);
             return BitConverter.ToUInt64(bytes, 0);
         }
 
@@ -68,7 +77,9 @@ namespace netcode.io
                     nameof(privateKey));
             }
             
-            var connectToken = new byte[netcodeNATIVE.NETCODE_CONNECT_TOKEN_BYTES];
+            var unmanagedPrivateKey = Marshal.AllocHGlobal(privateKey.Length);
+            var unmanagedConnectToken = Marshal.AllocHGlobal(netcodeNATIVE.NETCODE_CONNECT_TOKEN_BYTES);
+            Marshal.Copy(privateKey, 0, unmanagedPrivateKey, privateKey.Length);
 
             netcodeNATIVE.netcode_generate_connect_token(
                 serverAddresses.Length,
@@ -77,8 +88,13 @@ namespace netcode.io
                 clientId,
                 protocolId,
                 sequence,
-                privateKey,
-                connectToken);
+                unmanagedPrivateKey,
+                unmanagedConnectToken);
+
+            Marshal.FreeHGlobal(unmanagedPrivateKey);
+            var connectToken = new byte[netcodeNATIVE.NETCODE_CONNECT_TOKEN_BYTES];
+            Marshal.Copy(unmanagedConnectToken, connectToken, 0, connectToken.Length);
+            Marshal.FreeHGlobal(unmanagedConnectToken);
 
             return connectToken;
         }

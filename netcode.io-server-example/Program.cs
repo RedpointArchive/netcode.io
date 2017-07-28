@@ -28,8 +28,7 @@ namespace netcode.io.example.server
 
             NetcodeLibrary.SetLogLevel(NetcodeLogLevel.Info);
             var server = new Server(
-                "[::]:40000",
-                "[::1]:40000",
+                "127.0.0.1:40000",
                 testProtocolId,
                 privateKey,
                 time);

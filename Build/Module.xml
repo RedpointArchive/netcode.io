@@ -2,7 +2,7 @@
 <Module>
   <Name>netcode.io</Name>
   <Authors>Redpoint Games + netcode.io Authors</Authors>
-  <SemanticVersion>0.1.3</SemanticVersion>
+  <SemanticVersion>1.0.0</SemanticVersion>
   <Description>netcode.io is a cross-platform network protocol for games.  These are the C# bindings.</Description>
   <LicenseUrl>https://opensource.org/licenses/MIT</LicenseUrl>
   <ProjectUrl>https://netcode.io/</ProjectUrl>
@@ -11,6 +11,6 @@
   <DisableSynchronisation>false</DisableSynchronisation>
   <GenerateNuGetRepositories>true</GenerateNuGetRepositories>
   <Packages>
-    <Package Uri="https-git://github.com/networkprotocol/netcode.io" Folder="netcode.io-import" GitRef="master" />
+    <Package Uri="https-git://github.com/networkprotocol/netcode.io" Folder="netcode.io-import" GitRef="v1.0" />
   </Packages>
 </Module>
