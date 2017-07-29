@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>netcode.io</RootNamespace>
+    <PreBuildEvent></PreBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\netcode.io-csharp\Client.cs" Link="Client.cs" />
+    <Compile Include="..\netcode.io-csharp\ClientState.cs" Link="ClientState.cs" />
+    <Compile Include="..\netcode.io-csharp\NetcodeLibrary.cs" Link="NetcodeLibrary.cs" />
+    <Compile Include="..\netcode.io-csharp\NetcodeLogLevel.cs" Link="NetcodeLogLevel.cs" />
+    <Compile Include="..\netcode.io-csharp\Server.cs" Link="Server.cs" />
+    <Compile Include="..\netcode.io\netcodeNATIVE.cs" Link="netcodeNATIVE.cs" />
+    <Compile Include="..\netcode.io\netcodeNATIVEPINVOKE.cs" Link="netcodeNATIVEPINVOKE.cs" />
+    <Compile Include="..\netcode.io\SWIGTYPE_*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

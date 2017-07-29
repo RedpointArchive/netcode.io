@@ -32,13 +32,13 @@ namespace netcode.io.example.client
             Console.WriteLine("[client]");
 
             var client = new Client(
-                "::",
+                "0.0.0.0",
                 time);
 
             var clientId = NetcodeLibrary.GetRandomUInt64();
             Console.WriteLine($"client id is {clientId:X}");
 
-            var serverAddress = "[::1]:40000";
+            var serverAddress = "127.0.0.1:40000";
 
             byte[] connectToken = NetcodeLibrary.GenerateConnectTokenFromPrivateKey(
                 new[] {serverAddress},

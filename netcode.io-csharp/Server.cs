@@ -15,11 +15,10 @@ namespace netcode.io
         /// Create a new netcode.io server.
         /// </summary>
         /// <param name="bindAddress">The address to bind to.</param>
-        /// <param name="publicAddress">The publicly facing address that clients will connect to.</param>
         /// <param name="protocolId">The protocol ID.  This should be unique to your game or application.</param>
         /// <param name="privateKey">The symmetric private key used between your clients and the dedicated servers.</param>
         /// <param name="time">The starting time for the server as a double value.  Normally this will be 0 in the constructor.</param>
-        public Server(string bindAddress, string publicAddress, UInt64 protocolId, byte[] privateKey, double time)
+        public Server(string bindAddress, UInt64 protocolId, byte[] privateKey, double time)
         {
             NetcodeLibrary.Init();
 
@@ -35,7 +34,14 @@ namespace netcode.io
                     nameof(privateKey));
             }
 
-            _server = netcodeNATIVE.netcode_server_create(bindAddress, publicAddress, protocolId, privateKey, time);
+            var unmanagedPrivateKey = Marshal.AllocHGlobal(privateKey.Length);
+            Marshal.Copy(privateKey, 0, unmanagedPrivateKey, privateKey.Length);
+            _server = netcodeNATIVE.netcode_server_create(
+                bindAddress,
+                protocolId,
+                unmanagedPrivateKey,
+                time);
+            Marshal.FreeHGlobal(unmanagedPrivateKey);
 
             if (_server == null)
             {
@@ -113,7 +119,10 @@ namespace netcode.io
                 throw new ArgumentException($"Packet data can not be longer than {maxPacketSize} bytes.", nameof(packetData));
             }
 
-            netcodeNATIVE.netcode_server_send_packet(_server, clientIndex, packetData, packetData.Length);
+            var unmanagedPointer = Marshal.AllocHGlobal(packetData.Length);
+            Marshal.Copy(packetData, 0, unmanagedPointer, packetData.Length);
+            netcodeNATIVE.netcode_server_send_packet(_server, clientIndex, unmanagedPointer, packetData.Length);
+            Marshal.FreeHGlobal(unmanagedPointer);
         }
 
         /// <summary>
@@ -126,10 +135,11 @@ namespace netcode.io
             AssertNotDisposed();
 
             int packetBytes;
+            ulong packetSequence;
             IntPtr packetRaw;
             byte[] packet;
 
-            packetRaw = netcodeNATIVE.netcode_server_receive_packet(_server, clientIndex, out packetBytes);
+            packetRaw = netcodeNATIVE.netcode_server_receive_packet(_server, clientIndex, out packetBytes, out packetSequence);
             if (packetRaw == IntPtr.Zero)
             {
                 return null;

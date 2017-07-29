@@ -5,11 +5,13 @@
 
 %include <typemaps.i>
 
-%typemap(ctype) uint8_t * "uint8_t *" 
-%typemap(imtype) uint8_t * "byte[]" 
-%typemap(cstype) uint8_t * "byte[]" 
-%typemap(in) uint8_t * %{ $1 = ($1_ltype)$input; %} 
-%typemap(csin) uint8_t * "$csinput" 
+%typemap(ctype)  uint8_t * "uint8_t *"
+%typemap(imtype) uint8_t * "System.IntPtr"
+%typemap(cstype) uint8_t * "System.IntPtr"
+%typemap(csin)   uint8_t * "$csinput"
+%typemap(in)     uint8_t * %{ $1 = $input; %}
+%typemap(out)    uint8_t * %{ $result = $1; %}
+%typemap(csout)  uint8_t * { return $imcall; }
 
 %typemap(ctype)  void * "void *"
 %typemap(imtype) void * "System.IntPtr"
@@ -52,6 +54,7 @@
 %typemap(out) char** %{ $result = $1; %}
 
 %apply int *OUTPUT { int * packet_bytes };
+%apply unsigned long long *OUTPUT { uint64_t * packet_sequence };
 
 %ignore netcode_server_client_user_data;
 

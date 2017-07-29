@@ -27,8 +27,7 @@ namespace netcode.io.test
             NetcodeLibrary.SetLogLevel(NetcodeLogLevel.Info);
             
             var server = new Server(
-                "[::]:40000",
-                "[::1]:40000",
+                "127.0.0.1:40000",
                 testProtocolId,
                 privateKey,
                 time);
@@ -36,13 +35,13 @@ namespace netcode.io.test
             server.Start(NetcodeLibrary.GetMaxClients());
 
             var client = new Client(
-                "::",
+                "127.0.0.1",
                 time);
 
             var clientId = NetcodeLibrary.GetRandomUInt64();
             Console.WriteLine($"client id is {clientId:X}");
 
-            var serverAddress = "[::1]:40000";
+            var serverAddress = "127.0.0.1:40000";
 
             byte[] connectToken = NetcodeLibrary.GenerateConnectTokenFromPrivateKey(
                 new[] { serverAddress },

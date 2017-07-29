@@ -42,7 +42,10 @@ namespace netcode.io
         {
             AssertNotDisposed();
 
-            netcodeNATIVE.netcode_client_connect(_client, connectToken);
+            var unmanagedPointer = Marshal.AllocHGlobal(connectToken.Length);
+            Marshal.Copy(connectToken, 0, unmanagedPointer, connectToken.Length);
+            netcodeNATIVE.netcode_client_connect(_client, unmanagedPointer);
+            Marshal.FreeHGlobal(unmanagedPointer);
         }
 
         /// <summary>
@@ -88,7 +91,10 @@ namespace netcode.io
                 throw new ArgumentException($"Packet data can not be longer than {maxPacketSize} bytes.", nameof(packetData));
             }
 
-            netcodeNATIVE.netcode_client_send_packet(_client, packetData, packetData.Length);
+            var unmanagedPointer = Marshal.AllocHGlobal(packetData.Length);
+            Marshal.Copy(packetData, 0, unmanagedPointer, packetData.Length);
+            netcodeNATIVE.netcode_client_send_packet(_client, unmanagedPointer, packetData.Length);
+            Marshal.FreeHGlobal(unmanagedPointer);
         }
 
         /// <summary>
@@ -100,10 +106,11 @@ namespace netcode.io
             AssertNotDisposed();
 
             int packetBytes;
+            ulong packetSequence;
             IntPtr packetRaw;
             byte[] packet;
 
-            packetRaw = netcodeNATIVE.netcode_client_receive_packet(_client, out packetBytes);
+            packetRaw = netcodeNATIVE.netcode_client_receive_packet(_client, out packetBytes, out packetSequence);
             if (packetRaw == IntPtr.Zero)
             {
                 return null;
