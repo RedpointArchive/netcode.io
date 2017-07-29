@@ -11,6 +11,6 @@
   <DisableSynchronisation>false</DisableSynchronisation>
   <GenerateNuGetRepositories>true</GenerateNuGetRepositories>
   <Packages>
-    <Package Uri="https-git://github.com/networkprotocol/netcode.io" Folder="netcode.io-import" GitRef="master" />
+    <Package Uri="https-git://github.com/networkprotocol/netcode.io" Folder="netcode.io-import" GitRef="v1.0" />
   </Packages>
 </Module>
