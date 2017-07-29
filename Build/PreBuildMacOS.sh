@@ -3,8 +3,7 @@
 set -e
 set -x
 
-# Patch 4MB limit to 2MB, as MacOS's limit for buffers is lower.
-ruby -e "File.write(ARGV[0], File.read(ARGV[0]).gsub(ARGV[1], ARGV[2]))" netcode.io-import/c/netcode.c "4 * 1024 * 1024" "2 * 1024 * 1024"
+ruby -e 'File.write(ARGV[0], File.read(ARGV[0]).gsub(ARGV[1], ARGV[2]))' netcode.io-import/c/netcode.c '4 * 1024 * 1024' '2 * 1024 * 1024'
 
 pushd netcode.io-import
 export LIBS="-lsodium -L/usr/local/lib"
